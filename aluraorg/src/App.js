@@ -85,7 +85,7 @@ function App() {
         listaEquipos.map((equipo) => <Equipo 
           datos={equipo} 
           key={equipo.titulo} 
-          colaborador={colaboradores}
+          colaboradores={colaboradores}
           />)
       }
 
