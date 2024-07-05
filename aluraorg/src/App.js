@@ -4,12 +4,44 @@ import Formulario from './components/Formulario/Formulario.js';
 import MiOrg from './components/MiOrg/index.js';
 import Equipo from './components/Equipo/index.js';
 import { useState } from 'react';
+import Footer from './components/Footer/index.jsx';
+
 
 
 function App() {
 
     const [mostrarFormulario, actualizarMostrar] = useState(false);
-    const [colaboradores, actualizarColaboradores] = useState([])
+    
+    //CONST UTILIZADO PARA INICIALIZAR LISTA DE COLABORADORES VACIA
+    // const [colaboradores, actualizarColaboradores] = useState([])
+
+    //CONST UTILIZADO PARA INICIALIZAR LISTA DE COLABORADORES CON DATOS INICALES
+    const [colaboradores, actualizarColaboradores] = useState([{
+      equipo: "Front End",
+      foto: "https://github.com/angdan62.png",
+      nombre: "Angel Villa",
+      puesto: "Ingeniero"
+    },{
+      equipo: "Devops",
+      foto: "https://github.com/harlandlohora.png",
+      nombre: "Harland Lohora",
+      puesto: "Instructor en Alura Latam"
+    },{
+      equipo: "Innovación y Gestión",
+      foto: "https://github.com/JeanmarieAluraLatam.png",
+      nombre: "Jeanmarie Quijada",
+      puesto: "Instructora en Alura Latam"
+    },{
+      equipo: "Data Science",
+      foto: "https://github.com/christianpva.png",
+      nombre: "Christian Velasco",
+      puesto: "Head de Alura e instructor"
+    },{
+      equipo: "Front End",
+      foto: "https://github.com/JoseDarioGonzalezCha.png",
+      nombre: "Jose Gonzalez",
+      puesto: "Dev. FullStack"
+    }])
 
     const cambiarMostrar = () => {
       actualizarMostrar(!mostrarFormulario);
@@ -58,7 +90,7 @@ function App() {
       colorSecundario: "#FFF5D9"
     },
     {
-      titulo: "Innovación y  Gestión",
+      titulo: "Innovación y Gestión",
       colorPrimario: "#FF8A29",
       colorSecundario: "#FFEEDF"
     }
@@ -85,7 +117,8 @@ function App() {
         listaEquipos.map((equipo) => <Equipo 
           datos={equipo} 
           key={equipo.titulo} 
-          colaboradores={colaboradores}
+          colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)
+          }
           />)
       }
 
@@ -94,6 +127,9 @@ function App() {
             return <Equipo datos={equipo} key={equipo.titulo} />
         })
       } */}
+
+      {/* MOSTRAR COMPONENTE FOOTER */}
+      <Footer />
     </div>
   );
 }
